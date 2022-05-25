@@ -1,0 +1,1 @@
+export type typeProperty = 'body' | 'query' | 'params';
