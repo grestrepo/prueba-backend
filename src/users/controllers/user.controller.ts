@@ -14,3 +14,10 @@ export const createUser = async (req: Request, res: Response) => {
     info: newUser
   });
 };
+
+export const login = (req: Request, res: Response) => {
+  return res.status(200).json({
+    ok: true,
+    message: 'Login'
+  });
+};

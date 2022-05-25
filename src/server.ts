@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 
-import { userRouter } from './users/routers';
+import { userRouter, authRouter } from './users/routers';
 
 import { dbConnection } from './core/database';
 import { IPath } from './core/interfaces';
@@ -16,7 +16,8 @@ export class Server {
   constructor(){
     this.app = express();
     this.path = {
-      users: '/api/v1/users'
+      users: '/api/v1/users',
+      auth: '/api/v1/auth'
     };
     this.port = config.port;
 
@@ -37,6 +38,7 @@ export class Server {
 
   private routes(){
     this.app.use(this.path.users, userRouter);
+    this.app.use(this.path.auth, authRouter);
   }
 
   private async databaseConnect(){

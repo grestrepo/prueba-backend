@@ -1,5 +1,5 @@
 import {Request, Response, NextFunction} from 'express';
-import {ObjectSchema} from 'joi';
+import { ObjectSchema } from 'joi';
 
 import { User } from '../../users/models';
 

@@ -9,7 +9,7 @@ const userRouter = Router();
 userRouter.post('/', [
   validatorHandler(createUserSchema, 'body'),
   validateEmailExists
-],createUser);
+], createUser);
 
 
 export default userRouter;
