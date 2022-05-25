@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import { config } from '../config';
 
 export const dbConnection = async () => {
-  console.log(config);
   try {
     await mongoose.connect(config.MONGO_URL);
     console.log('Se conectó con exito');
