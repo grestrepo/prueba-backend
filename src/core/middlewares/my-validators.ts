@@ -23,9 +23,9 @@ export const validatorHandler = (schema: ObjectSchema, property: typeProperty) =
 
 export const validateEmailExists = async (req: Request, res: Response, next: NextFunction) => {
   const { email } = req.body; 
-  const user = await User.find({ email });
+  const user = await User.findOne({ email });
 
-  if(user.length === 0){
+  if(!user){
     return next();
   }
 

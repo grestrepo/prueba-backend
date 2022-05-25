@@ -24,7 +24,14 @@ const userSchema = new Schema({
   timestamps: true
 });
 
-// TODO: Crear Indice
+userSchema.methods.toJSON = function(){
+  const { __v, password, _id, ...user } = this.toObject();
+
+  return {
+    ...user,
+    uid: _id
+  };
+};
 
 const User: Model<IUser> = model('User', userSchema);
 

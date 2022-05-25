@@ -1,9 +1,10 @@
 
 export interface IUser {
+  uid: string;
   name: string;
   email: string;
   password: string;
   status: boolean;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
 }

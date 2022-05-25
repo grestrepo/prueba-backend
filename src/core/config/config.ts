@@ -4,5 +4,6 @@ dotenv.config();
 
 export const config = {
   port: process.env.PORT || '3000',
-  MONGO_URL: process.env.MONGO_URL || ''
+  MONGO_URL: process.env.MONGO_URL || '',
+  SECRET_KEY: process.env.SECRET_KEY || ''
 };

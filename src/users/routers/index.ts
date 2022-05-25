@@ -1,2 +1,2 @@
-export {default as userRouter} from './userRoutes.routes';
-export { default as authRouter } from './authRoutes.routes';
+export {default as userRouter} from './user.routes';
+export { default as authRouter } from './auth.routes';
