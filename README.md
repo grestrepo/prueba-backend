@@ -13,3 +13,16 @@ npm install
 ```bash
 npm install nodemon --global
 ```
+- Crear build a Javascript
+```bash
+npm run build
+```
+- Subir el servidor
+```bash
+npm run dev
+```
+
+Cambiar el nombre de .env.prueba a .env para tomar las variables de entorno en local. El usuario y contraseña de mongodb solo tiene permisos de lectura y escritura para la base de datos de prueba (únicos permisos necesarios).
+
+## Producción en heroku
+Este es el link de producción [link](https://prueba-server-rest.herokuapp.com)

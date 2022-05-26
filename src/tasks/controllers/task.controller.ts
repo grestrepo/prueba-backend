@@ -7,10 +7,8 @@ import { TaskService } from '../services/task.service';
 const taskService = new TaskService();
 
 export const getTasks = async (req: Request, res: Response) => {
-  console.log('Entró a getTasks');
   let query: FilterQuery<ITask> = {};
   const {status = 'all'} = req.query;
-  console.log(status);
   if(status !== 'all'){
     query = {
       status
