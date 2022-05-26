@@ -18,7 +18,7 @@ const taskSchema = new Schema({
   status: {
     type: String,
     enum: {
-      values: ['pending', 'in-progress', 'finished'],
+      values: ['pendiente', 'en-progreso', 'completada'],
       message: '{VALUE} no es un status aceptado'
     },
     required: true

@@ -1,11 +1,22 @@
 import { Request, Response } from 'express';
+import { FilterQuery } from 'mongoose';
+import { ITask } from '../../core/interfaces';
 
 import { TaskService } from '../services/task.service';
 
 const taskService = new TaskService();
 
 export const getTasks = async (req: Request, res: Response) => {
-  const tasks = await taskService.getTasks();
+  console.log('Entró a getTasks');
+  let query: FilterQuery<ITask> = {};
+  const {status = 'all'} = req.query;
+  console.log(status);
+  if(status !== 'all'){
+    query = {
+      status
+    };
+  }
+  const tasks = await taskService.getTasks(query);
   res.status(200).json({
     ok: true,
     tasks
@@ -55,5 +66,14 @@ export const updateTask = async (req: Request, res: Response) => {
   res.status(200).json({
     ok: true,
     task
+  });
+};
+
+export const deleteTask = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const taskDeleted = await taskService.deleteTask(id);
+  res.status(200).json({
+    ok: true,
+    taskDeleted
   });
 };

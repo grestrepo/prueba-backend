@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Task } from '../models';
 
 import { ITask } from '../../core/interfaces';
@@ -5,8 +6,8 @@ import { createTaskDto, updateTaskDto } from '../dtos';
 
 export class TaskService {
 
-  async getTasks(): Promise<ITask[]>{
-    const tasks = await Task.find();
+  async getTasks(query: any): Promise<ITask[]>{
+    const tasks = await Task.find(query);
 
     return tasks;
   }
@@ -21,19 +22,28 @@ export class TaskService {
     const updatedAt = new Date();
     const newTask = new Task({...payload, createdAt, updatedAt});
 
-    await newTask.save();
+    try {
+      await newTask.save();
+    } catch (error) {
+      throw new Error('Error a la hora de crear tarea');
+    }
 
     return newTask;
   }
 
   async updateTask(id: string, payload: updateTaskDto): Promise<ITask | null>{
-    const updatedTask = await Task.findByIdAndUpdate(id, {
+    const taskUpdated = await Task.findByIdAndUpdate(id, {
       ...payload,
       updatedAt: new Date()
     }, {
       new: true
     });
 
-    return updatedTask;
+    return taskUpdated;
+  }
+
+  async deleteTask(id: string): Promise<any> {
+    const taskDeleted = await Task.findByIdAndDelete(id);
+    return taskDeleted;
   }
 }

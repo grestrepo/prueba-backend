@@ -1,5 +1,5 @@
 export type typePriority = 'alta' | 'media' | 'baja';
-export type typeStatus = 'pending' | 'in-progress' | 'finished';
+export type typeStatus = 'pendiente' | 'en-progreso' | 'completada';
 
 export interface ITask {
   id: string;
