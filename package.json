@@ -2,7 +2,7 @@
   "name": "prueba-backend",
   "version": "1.0.0",
   "description": "Proyecto backend de la prueba técnica",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "node ./dist/index.js",
     "dev": "nodemon ./dist/index.js",

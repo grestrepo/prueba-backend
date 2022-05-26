@@ -1,18 +1,25 @@
-import { string } from 'joi';
 import { Schema, model, Model } from 'mongoose';
 
 import { ITask } from '../../core/interfaces';
 
 const taskSchema = new Schema({
   description: {
-    type: string,
+    type: String,
     required: true
   },
   priority: {
-    type: string,
+    type: String,
     enum: {
       values: ['alta', 'media', 'baja'],
       message: '{VALUE} no es una proridad aceptada'
+    },
+    required: true
+  },
+  status: {
+    type: String,
+    enum: {
+      values: ['pending', 'in-progress', 'finished'],
+      message: '{VALUE} no es un status aceptado'
     },
     required: true
   },

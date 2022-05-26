@@ -1,11 +1,11 @@
 import bcrypt from 'bcryptjs';
 import { User } from '../models';
 
-import { createDto } from '../dtos';
+import { createUserDto } from '../dtos';
 
 export class UserService {
 
-  async createUser(payload: createDto){
+  async createUser(payload: createUserDto){
     
     const salt = bcrypt.genSaltSync();
     const password = bcrypt.hashSync(payload.password, salt);
