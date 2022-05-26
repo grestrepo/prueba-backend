@@ -2,6 +2,7 @@ import {Request, Response, NextFunction} from 'express';
 import { ObjectSchema } from 'joi';
 
 import { User } from '../../users/models';
+import { Task } from '../../tasks/models';
 
 import { typeProperty } from '../interfaces';
 
@@ -33,4 +34,19 @@ export const validateEmailExists = async (req: Request, res: Response, next: Nex
     ok: false,
     message: `El correo ${email} ya está en uso`
   });
+};
+
+export const existsTaskById = async (req: Request, res: Response, next: NextFunction) => {
+  const id = req.params.id;
+  const task = await Task.findById(id);
+
+  if(!task){
+    return res.status(404).json({
+      ok: false,
+      message: `No se encontró la tarea con id ${id}`
+    });
+  }
+
+  return next();
+
 };

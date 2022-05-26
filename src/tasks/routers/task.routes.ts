@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { validatorHandler } from '../../core/middlewares';
+import { existsTaskById, validatorHandler } from '../../core/middlewares';
 
 import { createTask, getTask, getTasks, updateTask } from '../controllers';
 import { createTaskSchema, getTaskSchema, updateTaskSchema } from '../schemas';
@@ -18,7 +18,8 @@ taskRouter.post('/', [
 
 taskRouter.put('/:id', [
   validatorHandler(getTaskSchema, 'params'),
-  validatorHandler(updateTaskSchema, 'body')
+  validatorHandler(updateTaskSchema, 'body'),
+  existsTaskById
 ], updateTask);
 
 export default taskRouter;
